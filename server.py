@@ -1,5 +1,7 @@
 from flask import Flask, render_template, url_for, request, redirect
 import csv
+from waitress import serve
+
 app = Flask(__name__)
 print(__name__)
 
@@ -14,7 +16,7 @@ def about():
     return render_template('about.html')
 
 
-@app.route('/works.html')  # decorator
+@app.route('/works.html')  # decoratorpyth
 def work():
     return render_template('works.html')
 
@@ -73,4 +75,4 @@ def submit_form():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    serve(app, host='0.0.0.0', port=5000)
