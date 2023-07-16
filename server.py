@@ -1,6 +1,8 @@
 from flask import Flask, render_template, url_for, request, redirect
 import csv
 from waitress import serve
+import os
+
 
 app = Flask(__name__)
 print(__name__)
@@ -45,6 +47,8 @@ def write_to_file(data):
 
 
 def write_to_csv(data):
+    base_dir = os.path.abspath(os.path.dirname(__file__))
+    file_path = os.path.join(base_dir, 'database.csv')
     with open('database.csv', mode='a') as database2:
         email = data["email"]
         subject = data["subject"]
