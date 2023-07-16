@@ -47,9 +47,8 @@ def write_to_file(data):
 
 
 def write_to_csv(data):
-    base_dir = os.path.abspath(os.path.dirname(__file__))
-    file_path = os.path.join(base_dir, 'database.csv')
-    with open('database.csv', mode='a') as database2:
+    file_path = os.path.join(os.getcwd(), 'database.csv')
+    with open(file_path, mode='a') as database2:
         email = data["email"]
         subject = data["subject"]
         message = data["message"]
